@@ -1,3 +1,5 @@
+from NumericStringParser import NumericStringParser
+
 class Buf():
 
     def __init__(self, accessorList, size, expression, type):
@@ -5,6 +7,7 @@ class Buf():
     	self.size = size; # number
     	self.expression = expression; # relation between accessor vars as a string, e.g. "i+j"
     	self.type = type; # type of buffer content as a string, e.g. "int"
+    	self.nsp = NumericStringParser();
     	
     def getAccessorList(self):
     	return self.accessorList;
@@ -29,13 +32,27 @@ class Buf():
     	
     def setType(self,type):
     	self.type = type;
+    	
+    	
+    def evalExpression(self,vals):
+    	remake = self.expression;
+    	for index in range(len(vals)):
+    		remake = remake.replace(self.accessorList[index],str(vals[index]));
+
+    	return self.nsp.eval(remake);
+
 
 
 def main():
-	buffer = Buf("test",5,"i+k",int);
+	accarr = ["i","j"];
+	buffer = Buf(accarr,5,"i+j","int");
 	print(buffer.getSize());
 	buffer.setSize(22);
 	print(buffer.getSize());
+	arr = [1,2];
+	arr2 = [99,2];
+	print(buffer.evalExpression(arr));
+	print(buffer.evalExpression(arr2));
 	
 if __name__ == "__main__":
     main()
