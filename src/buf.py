@@ -1,4 +1,4 @@
-from NumericStringParser import NumericStringParser
+from numericstringparser import NumericStringParser
 
 class Buf():
 
