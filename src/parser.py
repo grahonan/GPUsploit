@@ -2,13 +2,27 @@ import json
 import networkx as nx
 import matplotlib.pyplot as plt
 import pydotplus
+from buf import Buf
+from accessor import Accessor
 
 class Parser():
 
 	def addNodes(self,currNode,parent):
 		#print("test");
 		#print(currNode);
-		self.G.add_node(currNode);
+		aL = [];
+		self.G.add_node(currNode,overFlowFlag = False);
+		if(self.data[currNode]['accessors']['vars'] != ''):
+			tempAcc = Accessor(self.data[currNode]['accessors']['vars'], self.data[currNode]['accessors']['maxValues']);
+			self.G.add_node(currNode,accessor = tempAcc);
+		if(self.data[currNode]['bufField']['accessors'] != ''):
+			tempVars = self.data[currNode]['bufField']['accessors'].split(',');
+			for i in range(len(tempVars)):
+				aL.append(Accessor(tempVars[i],""));
+			tempBuffer = Buf(aL,self.data[currNode]['bufField']['size'],self.data[currNode]['bufField']['expression'],self.data[currNode]['bufField']['type']);
+			self.G.add_node(currNode,buffer = tempBuffer);
+			
+		
 		if(parent != ''):
 			self.G.add_edge(parent,currNode);
 		if(self.data[currNode]['children']['taken'] == '') and (self.data[currNode]['children']['nTaken'] == ''):
@@ -44,7 +58,7 @@ def main():
 	print('');
 	print(len(parser.data['root']))
 	print(len(parser.data))
-	
+	print(parser.G.node['node52']['buffer'].getAccessorList()[0].var);
 	
 	nx.nx_pydot.write_dot(parser.G,'test.dot');
 	pos = nx.nx_pydot.graphviz_layout(parser.G, prog = 'dot');
