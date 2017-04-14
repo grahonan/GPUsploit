@@ -11,7 +11,7 @@ class Parser():
 		#print("test");
 		#print(currNode);
 		aL = [];
-		self.G.add_node(currNode,overFlowFlag = False);
+		self.G.add_node(currNode,overFlowFlag = False, accessor = '', buffer = '');
 		if(self.data[currNode]['accessors']['vars'] != ''):
 			tempAcc = Accessor(self.data[currNode]['accessors']['vars'], self.data[currNode]['accessors']['maxValues']);
 			self.G.add_node(currNode,accessor = tempAcc);
@@ -58,7 +58,7 @@ def main():
 	print('');
 	print(len(parser.data['root']))
 	print(len(parser.data))
-	print(parser.G.node['node52']['buffer'].getAccessorList()[0].var);
+	print(parser.G.node['node52']['buffer'].getAccessorList()[0].getVar());
 	
 	nx.nx_pydot.write_dot(parser.G,'test.dot');
 	pos = nx.nx_pydot.graphviz_layout(parser.G, prog = 'dot');
