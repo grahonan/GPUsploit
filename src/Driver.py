@@ -7,8 +7,10 @@ import matplotlib.pyplot as plt
 
 def main():
     parser = Parser("../assets/stack_overflow_1.json");
-    paths = [path for path in nx.all_simple_paths(parser.G, 'root', 'end')]
-    paths = [Path(path) for path in paths]
+    paths = [Path(path) for path in nx.all_simple_paths(parser.G, 'root', 'end')]
+    print("Number of traces: " + str(len(paths)))
+    print(parser.G.node[paths[0].nodeList[0]])
+    #paths = [Path(path) for path in paths]
     
     #print(paths)
     #print(parser.data['root']['children']['taken']);
