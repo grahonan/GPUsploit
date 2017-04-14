@@ -9,4 +9,4 @@ class Path():
         self.overflow = False;
 
     def getNodeList(self, edgeList):
-        return [node[0] for node in edgeList]
+        return [node for node in edgeList]

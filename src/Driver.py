@@ -1,11 +1,15 @@
 from parser import Parser
+from path import Path
+
 import networkx as nx
 import matplotlib.pyplot as plt
 
 
 def main():
     parser = Parser("../assets/stack_overflow_1.json");
-    paths = [path for path in nx.all_simple_paths(parser.G, 'root', 'node98')]
+    paths = [path for path in nx.all_simple_paths(parser.G, 'root', 'end')]
+    paths = [Path(path) for path in paths]
+    
     #print(paths)
     #print(parser.data['root']['children']['taken']);
     #print('');
