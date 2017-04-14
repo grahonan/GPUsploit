@@ -1,9 +1,11 @@
+from accessor import Accessor
+
 class Node():
 
     def __init__(self, buf, accessorList):
     	self.buf = buf;
     	self.overflowFlag = False;
-    	self.accessorList = accessorList; # list of accessor vars
+    	self.accessorList = accessorList; # list of accessors
     
     def getBuf(self):
     	return self.buf;
@@ -24,7 +26,8 @@ class Node():
 		self.accessorsList = accessorsList;
 
 def main():
-	node = Node("test",5);
+	node = Node("test",[Accessor("i",5)]);
+	print(node.accessorList[0].var);
 	print(node.getOverflowFlag());
 	node.setOverflowFlag(True);
 	print(node.getOverflowFlag());

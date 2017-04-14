@@ -1,9 +1,10 @@
 from numericstringparser import NumericStringParser
+from accessor import Accessor
 
 class Buf():
 
     def __init__(self, accessorList, size, expression, type):
-    	self.accessorList = accessorList; # list of accessor vars
+    	self.accessorList = accessorList; # list of accessors
     	self.size = size; # number
     	self.expression = expression; # relation between accessor vars as a string, e.g. "i+j"
     	self.type = type; # type of buffer content as a string, e.g. "int"
@@ -37,14 +38,14 @@ class Buf():
     def evalExpression(self,vals):
     	remake = self.expression;
     	for index in range(len(vals)):
-    		remake = remake.replace(self.accessorList[index],str(vals[index]));
+    		remake = remake.replace(self.accessorList[index].var,str(vals[index]));
 
     	return self.nsp.eval(remake);
 
 
 
 def main():
-	accarr = ["i","j"];
+	accarr = [Accessor("i",2),Accessor("j",2)];
 	buffer = Buf(accarr,5,"i+j","int");
 	print(buffer.getSize());
 	buffer.setSize(22);
