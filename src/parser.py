@@ -6,8 +6,8 @@ import pydotplus
 class Parser():
 
 	def addNodes(self,currNode,parent):
-		print("test");
-		print(currNode);
+		#print("test");
+		#print(currNode);
 		self.G.add_node(currNode);
 		if(parent != ''):
 			self.G.add_edge(parent,currNode);
@@ -28,8 +28,8 @@ class Parser():
 		self.G = nx.DiGraph();
 		#self.G.add_node(self.data['root']['nodeName']['line#']);
 		self.addNodes('root','');
-		print(self.G.nodes());
-		print(self.G.edges());
+		#print(self.G.nodes());
+		#print(self.G.edges());
 		
 	
 	
@@ -46,7 +46,7 @@ def main():
 	
 	nx.nx_pydot.write_dot(parser.G,'test.dot');
 	pos = nx.nx_pydot.graphviz_layout(parser.G, prog = 'dot');
-	nx.draw(parser.G, pos, with_labels = True, arrows = False);
+	nx.draw(parser.G, pos, with_labels = True, arrows = True);
 	plt.show();
 	
 if __name__ == "__main__":
