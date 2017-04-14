@@ -12,6 +12,8 @@ class Parser():
 		if(parent != ''):
 			self.G.add_edge(parent,currNode);
 		if(self.data[currNode]['children']['taken'] == '') and (self.data[currNode]['children']['nTaken'] == ''):
+			self.G.add_node('end');
+			self.G.add_edge(currNode,'end');
 			return;
 		parent = currNode;
 		currNode = 'node'+self.data[currNode]['children']['taken'];
