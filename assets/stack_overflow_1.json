@@ -34,8 +34,8 @@
 			"nTaken": "52"
 		},
 		"accessors": {
-			"vars": "",
-			"maxValues": ""
+			"vars": "CONST",
+			"maxValues": "0"
 		}
 	},
 	"node52": {

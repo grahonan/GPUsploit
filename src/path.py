@@ -6,7 +6,7 @@ class Path():
 
     def __init__(self, edgeList):
         self.nodeList = self.getNodeList(edgeList);
-        self.overflow = False;
+        self.overflowFlag = False;
 
     def getNodeList(self, edgeList):
         return [node for node in edgeList]
