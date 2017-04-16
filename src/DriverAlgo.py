@@ -122,7 +122,7 @@ def main(argv):
                             tempNode.attr['fillcolor'] = 'yellow'
                         #print(j);
                     tempGraph.layout(prog='dot')
-                    tempGraph.draw('../out/'+cufile+'/' + str(count) + '.png')
+                    tempGraph.draw('../out/'+cufile+'/trace' + str(count) + '.png')
                     count+= 1
                     fw.write("\n\n\n--------------------------------------------------------------------------\n\n\n")
                     print("\n\n\n--------------------------------------------------------------------------\n\n\n")
