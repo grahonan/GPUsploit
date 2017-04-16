@@ -1,6 +1,7 @@
 from parser import Parser
 from path import Path
 
+import re
 import networkx.drawing.nx_agraph as nx_agraph
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -56,23 +57,46 @@ def main():
 
         renderGraph = nx_agraph.to_agraph(parser.G)
         count = 0
+        f = open('stack_overflow1.cu', 'r')
+        fw = open('log.txt', 'w')
+        codeString = f.readlines()
+        stacktrace = []
+        line = []
         for i in paths:
 		if (i.overflowFlag == True):
-                    print("Overflow Detected")
+                    print("Overflow Trace " + str(count) + "\n")
+                    fw.write("Overflow Trace " + str(count) + "\n")
                     tempGraph = renderGraph
                     for j in i.nodeList:
                         if(parser.G.node[j]['overflowFlag'] == True):
+                            #print(lineNum)
+                            lineNum = parser.G.node[j]['line']
+                            if(lineNum != ''):
+                                tmpLine = "At Line " + lineNum + ": Exception: Warning! Overflow Detected:" + re.sub(r"\s+"," ",codeString[int(lineNum) - 1])
+                                print(tmpLine)
+                                fw.write(tmpLine + "\n")
+                            #re.sub(r"\s+","",codeString[int(lineNum) - 1]))
                             tempNode = tempGraph.get_node(j)
                             tempNode.attr['style'] = 'filled'
                             tempNode.attr['fillcolor'] = 'red'
                         else:
+                            #print(lineNum)
                             tempNode = tempGraph.get_node(j)
+                            lineNum = parser.G.node[j]['line']
+                            if(lineNum != ''):
+                                tmpLine = "At Line " + lineNum + ":" + re.sub(r"\s+"," ",codeString[int(lineNum) - 1])
+                                print(tmpLine)
+                                fw.write(tmpLine + "\n")
                             tempNode.attr['style'] = 'filled'
                             tempNode.attr['fillcolor'] = 'yellow'
                         #print(j);
                     tempGraph.layout(prog='dot')
                     tempGraph.draw('temp' + str(count) + '.png')
                     count+= 1
+                    fw.write("\n\n\n--------------------------------------------------------------------------\n\n\n")
+                    print("\n\n\n--------------------------------------------------------------------------\n\n\n")
+        #print (stacktrace)
+        fw.close()
 
         #parser.G.node['node98']['color']='black'
 	#nx.nx_pydot.write_dot(parser.G,'test.dot');
