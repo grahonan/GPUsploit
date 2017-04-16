@@ -6,7 +6,7 @@ The goal of GPUsploit is to discover buffer overflow bugs by statically analyzin
 
 There are many approaches to static buffer overflow detection, but one common approach requires programmers to add special annotations to their code [1]. GPUsploit doesn't require any such additions to CUDA source code, but does require a JSON-encoded graph of control flow and memory access. 
 
-![dependencies](http://i.imgur.com/ByTtK0H.png "dependencies")
+![dependencies](http://i.imgur.com/oKEMpNz.png "dependencies")
 *Figure 1. Software dependencies for GPUsploit*
 
 In this initial version of GPUsploit, we focus on the highest level of the pyramid depicted in Figure 1. Future work includes integrating GPUsploit with existing CUDA tokenizers and control flow analysis tools.
