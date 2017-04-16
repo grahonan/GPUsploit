@@ -5,7 +5,9 @@ import re
 import networkx.drawing.nx_agraph as nx_agraph
 import networkx as nx
 import matplotlib.pyplot as plt
-
+import sys
+import getopt
+import os
 
 def is_number(s):
     try:
@@ -14,8 +16,30 @@ def is_number(s):
     except ValueError:
         return False
 
-def main():
-	parser = Parser("../assets/stack_overflow_1.json");
+def main(argv):
+	inputfile = '';
+	cupath = '';
+	cufile = '';
+	
+	try:
+		inputfile = argv[0];
+	except IndexError:
+		print 'test.py <inputJson> <inputCU>';
+		sys.exit(2);
+	try:
+		cupath = argv[1];
+		cufile = os.path.basename(cupath);
+		cufile = cufile[:cufile.index('.')];
+		print(cufile);
+	except IndexError:
+		print 'test.py <inputJson> <inputCU>';
+		sys.exit(2);
+	
+	try:		
+		parser = Parser(inputfile); #"../assets/stack_overflow_1.json"
+	except:
+		print "File doesn't exist or is the wrong format!";
+		sys.exit(2);
 	paths = [Path(path) for path in nx.all_simple_paths(parser.G, 'root', 'end')]
 	print("Number of traces: " + str(len(paths)))
 	#print(parser.G.node[paths[0].nodeList[0]])
@@ -57,8 +81,15 @@ def main():
 
         renderGraph = nx_agraph.to_agraph(parser.G)
         count = 0
-        f = open('stack_overflow1.cu', 'r')
-        fw = open('log.txt', 'w')
+        f = open(cupath, 'r')
+        if not os.path.exists(os.path.dirname('../out/'+cufile+'/')):
+    		try:
+        		os.makedirs(os.path.dirname('../out/'+cufile+'/'))
+    		except OSError as exc: # Guard against race condition
+        		if exc.errno != errno.EEXIST:
+					raise
+        
+        fw = open('../out/'+cufile+'/log.txt', 'w')
         codeString = f.readlines()
         stacktrace = []
         line = []
@@ -91,7 +122,7 @@ def main():
                             tempNode.attr['fillcolor'] = 'yellow'
                         #print(j);
                     tempGraph.layout(prog='dot')
-                    tempGraph.draw('temp' + str(count) + '.png')
+                    tempGraph.draw('../out/'+cufile+'/' + str(count) + '.png')
                     count+= 1
                     fw.write("\n\n\n--------------------------------------------------------------------------\n\n\n")
                     print("\n\n\n--------------------------------------------------------------------------\n\n\n")
@@ -105,5 +136,5 @@ def main():
 	#plt.show();
                                             
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1:])
         
