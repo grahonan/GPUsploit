@@ -11,7 +11,7 @@ class Parser():
 		#print("test");
 		#print(currNode);
 		aL = [];
-		self.G.add_node(currNode,overflowFlag = False, accessor = '', buffer = '');
+		self.G.add_node(currNode,overflowFlag = False, accessor = '', buffer = '', line=self.data[currNode]['nodeName']['line#']);
 		if(self.data[currNode]['accessors']['vars'] != ''):
 			tempAcc = Accessor(self.data[currNode]['accessors']['vars'], self.data[currNode]['accessors']['maxValues']);
 			self.G.add_node(currNode,accessor = tempAcc);
@@ -26,7 +26,7 @@ class Parser():
 		if(parent != ''):
 			self.G.add_edge(parent,currNode);
 		if(self.data[currNode]['children']['taken'] == '') and (self.data[currNode]['children']['nTaken'] == ''):
-			self.G.add_node('end',overflowFlag = False, accessor = '', buffer = '');
+			self.G.add_node('end',overflowFlag = False, accessor = '', buffer = '',line ='');
 			self.G.add_edge(currNode,'end');
 			return;
 		parent = currNode;
