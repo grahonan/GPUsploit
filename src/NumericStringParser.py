@@ -50,10 +50,11 @@ class NumericStringParser(object):
         minus = Literal("-")
         mult = Literal("*")
         div = Literal("/")
+        modlit = Literal("%") #.................
         lpar = Literal("(").suppress()
         rpar = Literal(")").suppress()
         addop = plus | minus
-        multop = mult | div
+        multop = mult | div | modlit
         expop = Literal("^")
         pi = CaselessLiteral("PI")
         expr = Forward()
@@ -81,6 +82,7 @@ class NumericStringParser(object):
                     "-": operator.sub,
                     "*": operator.mul,
                     "/": operator.truediv,
+                    "%": operator.mod,
                     "^": operator.pow}
         self.fn = {"sin": math.sin,
                    "cos": math.cos,
@@ -95,7 +97,7 @@ class NumericStringParser(object):
         op = s.pop()
         if op == 'unary -':
             return -self.evaluateStack(s)
-        if op in "+-*/^":
+        if op in "+-*/%^":
             op2 = self.evaluateStack(s)
             op1 = self.evaluateStack(s)
             return self.opn[op](op1, op2)

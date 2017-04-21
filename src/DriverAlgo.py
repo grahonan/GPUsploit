@@ -42,6 +42,16 @@ def main(argv):
 		sys.exit(2);
 	paths = [Path(path) for path in nx.all_simple_paths(parser.G, 'root', 'end')]
 	print("Number of traces: " + str(len(paths)))
+	
+	graphs = [];
+	paths2 = [];
+	
+	for i in range(len(paths)):
+		graphs.append(Parser(inputfile));
+	for i in graphs:
+		paths2.append([Path(path) for path in nx.all_simple_paths(i.G, 'root', 'end')]);
+	
+	
 	#print(parser.G.node[paths[0].nodeList[0]])
 	#paths = [Path(path) for path in paths]
 
@@ -54,32 +64,81 @@ def main(argv):
 	#print(parser.G.node['node52']['buffer'].getAccessorList()[0].getVar());
 	aL = {};
 	vals = [];
-	for i in paths:
-		#reset dict for each new path
+
+	
+	for graphIndex in range(len(paths)):
 		aL = {};
-		for j in i.nodeList:
-			vals = []; #reset list for each new node
-			if(parser.G.node[j]['accessor'] != ''):
-				aL[parser.G.node[j]['accessor'].var] = parser.G.node[j]['accessor'].max;
-			if(parser.G.node[j]['buffer'] != ''):
-				for bufAcc in parser.G.node[j]['buffer'].getAccessorList():
+		for j in paths2[graphIndex][graphIndex].nodeList:
+			vals = [];
+			print(graphs[graphIndex].G.node[j]['line']);
+			if(graphs[graphIndex].G.node[j]['accessor'] != ''):
+				aL[graphs[graphIndex].G.node[j]['accessor'].var] = graphs[graphIndex].G.node[j]['accessor'].max;
+			if(graphs[graphIndex].G.node[j]['buffer'] != ''):
+				print(graphs[graphIndex].G.node[j]['buffer'].getAccessorList()[0].getVar());
+				for bufAcc in graphs[graphIndex].G.node[j]['buffer'].getAccessorList():
+					print("al"+str(aL[bufAcc.var]));
+					print(is_number(aL[bufAcc.var]));
+					
 					if(is_number(aL[bufAcc.var])): # add to vals list, to be passed into expression
+						
 						vals.append(aL[bufAcc.var]);
 						#print(j);
 						#print(aL[bufAcc.var])
 					else: #must be INT, UINT, LONG, ULONG, etc
-						i.overflowFlag = True;
-						parser.G.node[j]['overflowFlag'] = True;
-				if(parser.G.node[j]['overflowFlag'] == False):
-					evaluation = parser.G.node[j]['buffer'].evalExpression(vals);
+						paths2[graphIndex][graphIndex].overflowFlag = True;
+						graphs[graphIndex].G.node[j]['overflowFlag'] = True;
+						
+				print(graphs[graphIndex].G.node[j]['overflowFlag']);
+				if(graphs[graphIndex].G.node[j]['overflowFlag'] == False):
+					print("vals is ");
+					print(vals);
+					evaluation = graphs[graphIndex].G.node[j]['buffer'].evalExpression(vals);
+					print(evaluation);
 					#check if max is exceeded
-					if(evaluation >= parser.G.node[j]['buffer'].size):
-						i.overflowFlag = True;
-						parser.G.node[j]['overflowFlag'] = True;
+					if(evaluation >= graphs[graphIndex].G.node[j]['buffer'].size):
+						paths2[graphIndex][graphIndex].overflowFlag = True;
+						graphs[graphIndex].G.node[j]['overflowFlag'] = True;
                                                 #print ("overflow detected");
+	
 
+	#for i in paths:
+		#reset dict for each new path
+	#	aL = {};
+	#	for j in i.nodeList:
+	#		vals = []; #reset list for each new node
+	#		print(parser.G.node[j]['line']);
+	#		if(parser.G.node[j]['accessor'] != ''):
+	#			aL[parser.G.node[j]['accessor'].var] = parser.G.node[j]['accessor'].max;
+	#		if(parser.G.node[j]['buffer'] != ''):
+	#			print(parser.G.node[j]['buffer'].getAccessorList()[0].getVar());
+	#			for bufAcc in parser.G.node[j]['buffer'].getAccessorList():
+	#				print("al"+str(aL[bufAcc.var]));
+	#				print(is_number(aL[bufAcc.var]));
+	#				
+	#				if(is_number(aL[bufAcc.var])): # add to vals list, to be passed into expression
+	#					
+	#					vals.append(aL[bufAcc.var]);
+	#					#print(j);
+	#					#print(aL[bufAcc.var])
+	#				else: #must be INT, UINT, LONG, ULONG, etc
+	#					i.overflowFlag = True;
+	#					parser.G.node[j]['overflowFlag'] = True;
+	#					
+	#			print(parser.G.node[j]['overflowFlag']);
+	#			if(parser.G.node[j]['overflowFlag'] == False):
+	#				print("vals is ");
+	#				print(vals);
+	#				evaluation = parser.G.node[j]['buffer'].evalExpression(vals);
+	#				print(evaluation);
+	#				#check if max is exceeded
+	#				if(evaluation >= parser.G.node[j]['buffer'].size):
+	#					i.overflowFlag = True;
+	#					parser.G.node[j]['overflowFlag'] = True;
+     #                                           #print ("overflow detected");
 
-        renderGraph = nx_agraph.to_agraph(parser.G)
+		renderGraph = []
+        for graphIndex in range(len(paths)):
+        	renderGraph.append(nx_agraph.to_agraph(graphs[graphIndex].G));
         count = 0
         f = open(cupath, 'r')
         if not os.path.exists(os.path.dirname('../out/'+cufile+'/')):
@@ -93,15 +152,17 @@ def main(argv):
         codeString = f.readlines()
         stacktrace = []
         line = []
-        for i in paths:
-		if (i.overflowFlag == True):
+        #paths2[graphIndex][graphIndex] is a path
+        #graphs[graphIndex] is a parser
+        for graphIndex in range(len(paths)):
+		if (paths2[graphIndex][graphIndex].overflowFlag == True):
                     print("Overflow Trace " + str(count) + "\n")
                     fw.write("Overflow Trace " + str(count) + "\n")
-                    tempGraph = renderGraph
-                    for j in i.nodeList:
-                        if(parser.G.node[j]['overflowFlag'] == True):
+                    tempGraph = renderGraph[graphIndex];
+                    for j in paths2[graphIndex][graphIndex].nodeList:
+                        if(graphs[graphIndex].G.node[j]['overflowFlag'] == True):
                             #print(lineNum)
-                            lineNum = parser.G.node[j]['line']
+                            lineNum = graphs[graphIndex].G.node[j]['line']
                             if(lineNum != ''):
                                 tmpLine = "At Line " + lineNum + ": Exception: Warning! Overflow Detected:" + re.sub(r"\s+"," ",codeString[int(lineNum) - 1])
                                 print(tmpLine)
@@ -113,7 +174,7 @@ def main(argv):
                         else:
                             #print(lineNum)
                             tempNode = tempGraph.get_node(j)
-                            lineNum = parser.G.node[j]['line']
+                            lineNum = graphs[graphIndex] .G.node[j]['line']
                             if(lineNum != ''):
                                 tmpLine = "At Line " + lineNum + ":" + re.sub(r"\s+"," ",codeString[int(lineNum) - 1])
                                 print(tmpLine)

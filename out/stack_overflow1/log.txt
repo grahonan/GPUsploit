@@ -47,7 +47,7 @@ At Line 60: unsigned int hash=5381;
 At Line 66: for(int i=0;i<len;i++) 
 At Line 68: Exception: Warning! Overflow Detected: buf[i]=input[i]; 
 At Line 73: for(int i=0;i<BUF_LEN;i++) 
-At Line 78: Exception: Warning! Overflow Detected: return (unsigned long) (fp[hash%8])(); 
+At Line 78: return (unsigned long) (fp[hash%8])(); 
 At Line 98: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
 
 
@@ -92,7 +92,7 @@ At Line 59: fp[7]=dummy8;
 At Line 60: unsigned int hash=5381; 
 At Line 66: for(int i=0;i<len;i++) 
 At Line 73: for(int i=0;i<BUF_LEN;i++) 
-At Line 78: Exception: Warning! Overflow Detected: return (unsigned long) (fp[hash%8])(); 
+At Line 78: return (unsigned long) (fp[hash%8])(); 
 At Line 98: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
 
 
