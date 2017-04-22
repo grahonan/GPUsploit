@@ -1,0 +1,198 @@
+Overflow Trace 0
+At Line 89: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 93: if(admin) 
+At Line 101: if(idx==0) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 59: fp[6]=dummy7; 
+At Line 60: fp[7]=dummy8; 
+At Line 62: unsigned int hash=5381; 
+At Line 69: for(int i=0;i<len;i++) 
+At Line 76: for(int i=0;i<BUF_LEN;i++) 
+At Line 81: return (unsigned long) (fp[hash%8])(); 
+At Line 106: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 1
+At Line 89: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 93: if(admin) 
+At Line 101: if(idx==0) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 59: fp[6]=dummy7; 
+At Line 60: fp[7]=dummy8; 
+At Line 62: unsigned int hash=5381; 
+At Line 69: for(int i=0;i<len;i++) 
+At Line 76: for(int i=0;i<BUF_LEN;i++) 
+At Line 78: hash=((hash<<5)+hash)+buf[i]; 
+At Line 81: Exception: Warning! Overflow Detected: return (unsigned long) (fp[hash%8])(); 
+At Line 106: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 2
+At Line 89: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 93: if(admin) 
+At Line 101: if(idx==0) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 59: fp[6]=dummy7; 
+At Line 60: fp[7]=dummy8; 
+At Line 62: unsigned int hash=5381; 
+At Line 69: for(int i=0;i<len;i++) 
+At Line 71: Exception: Warning! Overflow Detected: buf[i]=input[i]; 
+At Line 76: for(int i=0;i<BUF_LEN;i++) 
+At Line 81: return (unsigned long) (fp[hash%8])(); 
+At Line 106: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 3
+At Line 89: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 93: if(admin) 
+At Line 101: if(idx==0) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 59: fp[6]=dummy7; 
+At Line 60: fp[7]=dummy8; 
+At Line 62: unsigned int hash=5381; 
+At Line 69: for(int i=0;i<len;i++) 
+At Line 71: Exception: Warning! Overflow Detected: buf[i]=input[i]; 
+At Line 76: for(int i=0;i<BUF_LEN;i++) 
+At Line 78: hash=((hash<<5)+hash)+buf[i]; 
+At Line 81: Exception: Warning! Overflow Detected: return (unsigned long) (fp[hash%8])(); 
+At Line 106: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 4
+At Line 89: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 93: if(admin) 
+At Line 101: if(idx==0) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 58: fp[5]=dummy6; 
+At Line 59: fp[6]=dummy7; 
+At Line 60: fp[7]=dummy8; 
+At Line 62: unsigned int hash=5381; 
+At Line 69: for(int i=0;i<len;i++) 
+At Line 76: for(int i=0;i<BUF_LEN;i++) 
+At Line 81: return (unsigned long) (fp[hash%8])(); 
+At Line 106: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 5
+At Line 89: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 93: if(admin) 
+At Line 101: if(idx==0) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 58: fp[5]=dummy6; 
+At Line 59: fp[6]=dummy7; 
+At Line 60: fp[7]=dummy8; 
+At Line 62: unsigned int hash=5381; 
+At Line 69: for(int i=0;i<len;i++) 
+At Line 76: for(int i=0;i<BUF_LEN;i++) 
+At Line 78: hash=((hash<<5)+hash)+buf[i]; 
+At Line 81: Exception: Warning! Overflow Detected: return (unsigned long) (fp[hash%8])(); 
+At Line 106: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 6
+At Line 89: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 93: if(admin) 
+At Line 101: if(idx==0) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 58: fp[5]=dummy6; 
+At Line 59: fp[6]=dummy7; 
+At Line 60: fp[7]=dummy8; 
+At Line 62: unsigned int hash=5381; 
+At Line 69: for(int i=0;i<len;i++) 
+At Line 71: Exception: Warning! Overflow Detected: buf[i]=input[i]; 
+At Line 76: for(int i=0;i<BUF_LEN;i++) 
+At Line 81: return (unsigned long) (fp[hash%8])(); 
+At Line 106: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 7
+At Line 89: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 93: if(admin) 
+At Line 101: if(idx==0) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 58: fp[5]=dummy6; 
+At Line 59: fp[6]=dummy7; 
+At Line 60: fp[7]=dummy8; 
+At Line 62: unsigned int hash=5381; 
+At Line 69: for(int i=0;i<len;i++) 
+At Line 71: Exception: Warning! Overflow Detected: buf[i]=input[i]; 
+At Line 76: for(int i=0;i<BUF_LEN;i++) 
+At Line 78: hash=((hash<<5)+hash)+buf[i]; 
+At Line 81: Exception: Warning! Overflow Detected: return (unsigned long) (fp[hash%8])(); 
+At Line 106: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 8
+At Line 89: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 93: if(admin) 
+At Line 106: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+

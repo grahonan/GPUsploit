@@ -1,0 +1,336 @@
+Overflow Trace 0
+At Line 88: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 90: if(threadIdx.x==0) 
+At Line 91: for(int i=0;i<len;i++) 
+At Line 92: Exception: Warning! Overflow Detected: overf[i]=input[i]; 
+At Line 94: if(admin) 
+At Line 104: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 1
+At Line 88: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 90: if(threadIdx.x==0) 
+At Line 91: for(int i=0;i<len;i++) 
+At Line 92: Exception: Warning! Overflow Detected: overf[i]=input[i]; 
+At Line 94: if(admin) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 57: fp[5]=dummy6; 
+At Line 58: fp[6]=dummy7; 
+At Line 59: fp[7]=dummy8; 
+At Line 61: unsigned int hash=5381; 
+At Line 68: for(int i=0;i<len;i++) 
+At Line 75: for(int i=0;i<BUF_LEN;i++) 
+At Line 77: hash=((hash<<5)+hash)+buf[i]; 
+At Line 80: return (unsigned long) (fp[hash%8])(); 
+At Line 104: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 2
+At Line 88: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 90: if(threadIdx.x==0) 
+At Line 91: for(int i=0;i<len;i++) 
+At Line 92: Exception: Warning! Overflow Detected: overf[i]=input[i]; 
+At Line 94: if(admin) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 57: fp[5]=dummy6; 
+At Line 58: fp[6]=dummy7; 
+At Line 59: fp[7]=dummy8; 
+At Line 61: unsigned int hash=5381; 
+At Line 68: for(int i=0;i<len;i++) 
+At Line 75: for(int i=0;i<BUF_LEN;i++) 
+At Line 80: return (unsigned long) (fp[hash%8])(); 
+At Line 104: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 3
+At Line 88: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 90: if(threadIdx.x==0) 
+At Line 91: for(int i=0;i<len;i++) 
+At Line 92: Exception: Warning! Overflow Detected: overf[i]=input[i]; 
+At Line 94: if(admin) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 57: fp[5]=dummy6; 
+At Line 58: fp[6]=dummy7; 
+At Line 59: fp[7]=dummy8; 
+At Line 61: unsigned int hash=5381; 
+At Line 68: for(int i=0;i<len;i++) 
+At Line 70: Exception: Warning! Overflow Detected: buf[i]=overf[i]; 
+At Line 75: for(int i=0;i<BUF_LEN;i++) 
+At Line 77: hash=((hash<<5)+hash)+buf[i]; 
+At Line 80: return (unsigned long) (fp[hash%8])(); 
+At Line 104: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 4
+At Line 88: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 90: if(threadIdx.x==0) 
+At Line 91: for(int i=0;i<len;i++) 
+At Line 92: Exception: Warning! Overflow Detected: overf[i]=input[i]; 
+At Line 94: if(admin) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 57: fp[5]=dummy6; 
+At Line 58: fp[6]=dummy7; 
+At Line 59: fp[7]=dummy8; 
+At Line 61: unsigned int hash=5381; 
+At Line 68: for(int i=0;i<len;i++) 
+At Line 70: Exception: Warning! Overflow Detected: buf[i]=overf[i]; 
+At Line 75: for(int i=0;i<BUF_LEN;i++) 
+At Line 80: return (unsigned long) (fp[hash%8])(); 
+At Line 104: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 5
+At Line 88: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 90: if(threadIdx.x==0) 
+At Line 91: for(int i=0;i<len;i++) 
+At Line 94: if(admin) 
+At Line 104: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 6
+At Line 88: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 90: if(threadIdx.x==0) 
+At Line 91: for(int i=0;i<len;i++) 
+At Line 94: if(admin) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 57: fp[5]=dummy6; 
+At Line 58: fp[6]=dummy7; 
+At Line 59: fp[7]=dummy8; 
+At Line 61: unsigned int hash=5381; 
+At Line 68: for(int i=0;i<len;i++) 
+At Line 75: for(int i=0;i<BUF_LEN;i++) 
+At Line 77: hash=((hash<<5)+hash)+buf[i]; 
+At Line 80: return (unsigned long) (fp[hash%8])(); 
+At Line 104: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 7
+At Line 88: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 90: if(threadIdx.x==0) 
+At Line 91: for(int i=0;i<len;i++) 
+At Line 94: if(admin) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 57: fp[5]=dummy6; 
+At Line 58: fp[6]=dummy7; 
+At Line 59: fp[7]=dummy8; 
+At Line 61: unsigned int hash=5381; 
+At Line 68: for(int i=0;i<len;i++) 
+At Line 75: for(int i=0;i<BUF_LEN;i++) 
+At Line 80: return (unsigned long) (fp[hash%8])(); 
+At Line 104: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 8
+At Line 88: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 90: if(threadIdx.x==0) 
+At Line 91: for(int i=0;i<len;i++) 
+At Line 94: if(admin) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 57: fp[5]=dummy6; 
+At Line 58: fp[6]=dummy7; 
+At Line 59: fp[7]=dummy8; 
+At Line 61: unsigned int hash=5381; 
+At Line 68: for(int i=0;i<len;i++) 
+At Line 70: Exception: Warning! Overflow Detected: buf[i]=overf[i]; 
+At Line 75: for(int i=0;i<BUF_LEN;i++) 
+At Line 77: hash=((hash<<5)+hash)+buf[i]; 
+At Line 80: return (unsigned long) (fp[hash%8])(); 
+At Line 104: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 9
+At Line 88: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 90: if(threadIdx.x==0) 
+At Line 91: for(int i=0;i<len;i++) 
+At Line 94: if(admin) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 57: fp[5]=dummy6; 
+At Line 58: fp[6]=dummy7; 
+At Line 59: fp[7]=dummy8; 
+At Line 61: unsigned int hash=5381; 
+At Line 68: for(int i=0;i<len;i++) 
+At Line 70: Exception: Warning! Overflow Detected: buf[i]=overf[i]; 
+At Line 75: for(int i=0;i<BUF_LEN;i++) 
+At Line 80: return (unsigned long) (fp[hash%8])(); 
+At Line 104: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 10
+At Line 88: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 90: if(threadIdx.x==0) 
+At Line 94: if(admin) 
+At Line 104: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 11
+At Line 88: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 90: if(threadIdx.x==0) 
+At Line 94: if(admin) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 57: fp[5]=dummy6; 
+At Line 58: fp[6]=dummy7; 
+At Line 59: fp[7]=dummy8; 
+At Line 61: unsigned int hash=5381; 
+At Line 68: for(int i=0;i<len;i++) 
+At Line 75: for(int i=0;i<BUF_LEN;i++) 
+At Line 77: hash=((hash<<5)+hash)+buf[i]; 
+At Line 80: return (unsigned long) (fp[hash%8])(); 
+At Line 104: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 12
+At Line 88: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 90: if(threadIdx.x==0) 
+At Line 94: if(admin) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 57: fp[5]=dummy6; 
+At Line 58: fp[6]=dummy7; 
+At Line 59: fp[7]=dummy8; 
+At Line 61: unsigned int hash=5381; 
+At Line 68: for(int i=0;i<len;i++) 
+At Line 75: for(int i=0;i<BUF_LEN;i++) 
+At Line 80: return (unsigned long) (fp[hash%8])(); 
+At Line 104: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 13
+At Line 88: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 90: if(threadIdx.x==0) 
+At Line 94: if(admin) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 57: fp[5]=dummy6; 
+At Line 58: fp[6]=dummy7; 
+At Line 59: fp[7]=dummy8; 
+At Line 61: unsigned int hash=5381; 
+At Line 68: for(int i=0;i<len;i++) 
+At Line 70: Exception: Warning! Overflow Detected: buf[i]=overf[i]; 
+At Line 75: for(int i=0;i<BUF_LEN;i++) 
+At Line 77: hash=((hash<<5)+hash)+buf[i]; 
+At Line 80: return (unsigned long) (fp[hash%8])(); 
+At Line 104: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
+Overflow Trace 14
+At Line 88: int idx=blockDim.x*blockIdx.x+threadIdx.x; 
+At Line 90: if(threadIdx.x==0) 
+At Line 94: if(admin) 
+At Line 52: fp[0]=dummy1; 
+At Line 53: fp[1]=dummy2; 
+At Line 54: fp[2]=dummy3; 
+At Line 55: fp[3]=dummy4; 
+At Line 56: fp[4]=dummy5; 
+At Line 57: fp[5]=dummy6; 
+At Line 58: fp[6]=dummy7; 
+At Line 59: fp[7]=dummy8; 
+At Line 61: unsigned int hash=5381; 
+At Line 68: for(int i=0;i<len;i++) 
+At Line 70: Exception: Warning! Overflow Detected: buf[i]=overf[i]; 
+At Line 75: for(int i=0;i<BUF_LEN;i++) 
+At Line 80: return (unsigned long) (fp[hash%8])(); 
+At Line 104: Exception: Warning! Overflow Detected: hashes[idx]=my_hash; 
+
+
+
+--------------------------------------------------------------------------
+
+
