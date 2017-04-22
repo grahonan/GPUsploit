@@ -39,8 +39,6 @@ class Buf():
     	remake = self.expression;
     	for index in range(len(vals)):
     		remake = remake.replace(self.accessorList[index].var,str(vals[index]));
-		print("Remake");
-		print(remake);
     	return self.nsp.eval(remake);
 
 
