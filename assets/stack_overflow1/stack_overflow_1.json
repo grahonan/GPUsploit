@@ -1,0 +1,326 @@
+{
+	"root": {
+		"nodeName": {
+			"line#": "86"
+		},
+		"bufField": {
+			"accessors": "",
+			"size": "",
+			"expression": "",
+			"type": ""
+		},
+		"children": {
+			"taken": "90",
+			"nTaken": ""
+		},
+		"accessors": {
+			"vars": "idx",
+			"maxValues": "INT"
+		}
+	},
+
+	"node90": {
+		"nodeName": {
+			"line#": "90"
+		},
+		"bufField": {
+			"accessors": "",
+			"size": "",
+			"expression": "",
+			"type": ""
+		},
+		"children": {
+			"taken": "98",
+			"nTaken": "52"
+		},
+		"accessors": {
+			"vars": "CONST",
+			"maxValues": "0"
+		}
+	},
+	"node52": {
+		"nodeName": {
+			"line#": "52"
+		},
+		"bufField": {
+			"accessors": "CONST",
+			"size": "8",
+			"expression": "0",
+			"type": "ULONG"
+		},
+		"children": {
+			"taken": "53",
+			"nTaken": ""
+		},
+		"accessors": {
+			"vars": "",
+			"maxValues": ""
+		}
+	},
+	"node53": {
+		"nodeName": {
+			"line#": "53"
+		},
+		"bufField": {
+			"accessors": "CONST",
+			"size": "8",
+			"expression": "1",
+			"type": "ULONG"
+		},
+		"children": {
+			"taken": "54",
+			"nTaken": ""
+		},
+		"accessors": {
+			"vars": "",
+			"maxValues": ""
+		}
+	},
+	"node54": {
+		"nodeName": {
+			"line#": "54"
+		},
+		"bufField": {
+			"accessors": "CONST",
+			"size": "8",
+			"expression": "2",
+			"type": "ULONG"
+		},
+		"children": {
+			"taken": "55",
+			"nTaken": ""
+		},
+		"accessors": {
+			"vars": "",
+			"maxValues": ""
+		}
+	},
+	"node55": {
+		"nodeName": {
+			"line#": "55"
+		},
+		"bufField": {
+			"accessors": "CONST",
+			"size": "8",
+			"expression": "3",
+			"type": "ULONG"
+		},
+		"children": {
+			"taken": "56",
+			"nTaken": ""
+		},
+		"accessors": {
+			"vars": "",
+			"maxValues": ""
+		}
+	},
+	"node56": {
+		"nodeName": {
+			"line#": "56"
+		},
+		"bufField": {
+			"accessors": "CONST",
+			"size": "8",
+			"expression": "4",
+			"type": "ULONG"
+		},
+		"children": {
+			"taken": "57",
+			"nTaken": ""
+		},
+		"accessors": {
+			"vars": "",
+			"maxValues": ""
+		}
+	},
+	"node57": {
+		"nodeName": {
+			"line#": "57"
+		},
+		"bufField": {
+			"accessors": "CONST",
+			"size": "8",
+			"expression": "5",
+			"type": "ULONG"
+		},
+		"children": {
+			"taken": "58",
+			"nTaken": ""
+		},
+		"accessors": {
+			"vars": "",
+			"maxValues": ""
+		}
+	},
+	"node58": {
+		"nodeName": {
+			"line#": "58"
+		},
+		"bufField": {
+			"accessors": "CONST",
+			"size": "8",
+			"expression": "6",
+			"type": "ULONG"
+		},
+		"children": {
+			"taken": "59",
+			"nTaken": ""
+		},
+		"accessors": {
+			"vars": "",
+			"maxValues": ""
+		}
+	},
+	"node59": {
+		"nodeName": {
+			"line#": "59"
+		},
+		"bufField": {
+			"accessors": "CONST",
+			"size": "8",
+			"expression": "7",
+			"type": "ULONG"
+		},
+		"children": {
+			"taken": "60",
+			"nTaken": ""
+		},
+		"accessors": {
+			"vars": "",
+			"maxValues": ""
+		}
+	},
+	"node60": {
+		"nodeName": {
+			"line#": "60"
+		},
+		"bufField": {
+			"accessors": "",
+			"size": "",
+			"expression": "",
+			"type": ""
+		},
+		"children": {
+			"taken": "66",
+			"nTaken": ""
+		},
+		"accessors": {
+			"vars": "hash",
+			"maxValues": "5381"
+		}
+	},
+	"node66": {
+		"nodeName": {
+			"line#": "66"
+		},
+		"bufField": {
+			"accessors": "",
+			"size": "",
+			"expression": "",
+			"type": ""
+		},
+		"children": {
+			"taken": "68",
+			"nTaken": "73"
+		},
+		"accessors": {
+			"vars": "i",
+			"maxValues": "INT"
+		}
+	},
+	"node68": {
+		"nodeName": {
+			"line#": "68"
+		},
+		"bufField": {
+			"accessors": "i",
+			"size": "16",
+			"expression": "i",
+			"type": "UINT"
+		},
+		"children": {
+			"taken": "73",
+			"nTaken": ""
+		},
+		"accessors": {
+			"vars": "",
+			"maxValues": ""
+		}
+	},
+	"node73": {
+		"nodeName": {
+			"line#": "73"
+		},
+		"bufField": {
+			"accessors": "",
+			"size": "",
+			"expression": "",
+			"type": ""
+		},
+		"children": {
+			"taken": "75",
+			"nTaken": "78"
+		},
+		"accessors": {
+			"vars": "i",
+			"maxValues": "15"
+		}
+	},
+	"node75": {
+		"nodeName": {
+			"line#": "75"
+		},
+		"bufField": {
+			"accessors": "i",
+			"size": "16",
+			"expression": "i",
+			"type": "UINT"
+		},
+		"children": {
+			"taken": "78",
+			"nTaken": ""
+		},
+		"accessors": {
+			"vars": "",
+			"maxValues": ""
+		}
+	},
+	"node78": {
+		"nodeName": {
+			"line#": "78"
+		},
+		"bufField": {
+			"accessors": "hash",
+			"size": "8",
+			"expression": "hash%8",
+			"type": "ULONG"
+		},
+		"children": {
+			"taken": "98",
+			"nTaken": ""
+		},
+		"accessors": {
+			"vars": "",
+			"maxValues": ""
+		}
+	},
+	"node98": {
+		"nodeName": {
+			"line#": "98"
+		},
+		"bufField": {
+			"accessors": "idx",
+			"size": "2",
+			"expression": "idx",
+			"type": "ULONG"
+		},
+		"children": {
+			"taken": "",
+			"nTaken": ""
+		},
+		"accessors": {
+			"vars": "",
+			"maxValues": ""
+		}
+	}
+}
